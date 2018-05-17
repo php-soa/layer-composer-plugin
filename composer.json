@@ -23,9 +23,9 @@
     "require": {
         "php": ">=7.2",
         "composer-plugin-api": "^1.1",
-        "php-soa/singleton": "dev-master",
-        "php-soa/exceptions": "dev-master",
-        "php-soa/notifications": "dev-master"
+        "php-soa/singleton-interface": "dev-master",
+        "php-soa/exceptions-component": "dev-master",
+        "php-soa/notifications-component": "dev-master"
     },
     "require-dev": {
         "composer/composer": "^1.6",
@@ -60,15 +60,15 @@
     "repositories": [
         {
             "type": "github",
-            "url": "https://github.com/php-soa/singleton"
+            "url": "https://github.com/php-soa/singleton-interface"
         },
         {
             "type": "github",
-            "url": "https://github.com/php-soa/notifications"
+            "url": "https://github.com/php-soa/notifications-component"
         },
         {
             "type": "github",
-            "url": "https://github.com/php-soa/exceptions"
+            "url": "https://github.com/php-soa/exceptions-component"
         }
     ]
 }
