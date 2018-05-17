@@ -1,0 +1,74 @@
+{
+    "name": "php-soa/layer-composer-plugin",
+    "description": "SOA Layer Composer Plugin",
+    "type": "composer-plugin",
+    "keywords": [
+        "php",
+        "soa",
+        "composer-plugin",
+        "layer-composer-plugin"
+    ],
+    "homepage": "https://github.com/php-soa/layer-composer-plugin/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roma Baranenko",
+            "email": "jungle.romabb8@gmail.com",
+            "role": "Lead Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/php-soa/layer-composer-plugin/issues/"
+    },
+    "require": {
+        "php": ">=7.2",
+        "composer-plugin-api": "^1.1",
+        "php-soa/singleton": "dev-master",
+        "php-soa/exceptions": "dev-master",
+        "php-soa/warnings": "dev-master"
+    },
+    "require-dev": {
+        "composer/composer": "^1.6",
+        "squizlabs/php_codesniffer": "^3.2",
+        "phpunit/phpunit": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "SOA\\Plugins\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SOA\\Plugins\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --filter",
+        "tests": "phpunit tests"
+    },
+    "extra": {
+        "class": "SOA\\Plugins\\LayerComposerPlugin"
+    },
+    "archive": {
+        "exclude": [
+            "*",
+            ".*",
+            "!src/*",
+            "!composer.json"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/php-soa/singleton"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/php-soa/warnings"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/php-soa/exceptions"
+        }
+    ]
+}

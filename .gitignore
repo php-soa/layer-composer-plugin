@@ -1,0 +1,3 @@
+*.lock
+/phpunit.xml
+vendor/
