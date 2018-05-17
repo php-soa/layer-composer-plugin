@@ -25,7 +25,7 @@
         "composer-plugin-api": "^1.1",
         "php-soa/singleton": "dev-master",
         "php-soa/exceptions": "dev-master",
-        "php-soa/warnings": "dev-master"
+        "php-soa/notifications": "dev-master"
     },
     "require-dev": {
         "composer/composer": "^1.6",
@@ -64,7 +64,7 @@
         },
         {
             "type": "github",
-            "url": "https://github.com/php-soa/warnings"
+            "url": "https://github.com/php-soa/notifications"
         },
         {
             "type": "github",
