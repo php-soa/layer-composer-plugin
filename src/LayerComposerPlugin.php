@@ -30,7 +30,7 @@ use Composer\DependencyResolver\Operation\InstallOperation;
  */
 class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
 
-    public const LAYERS_LOCK_FILE = 'layers.lock';
+    public const LAYERS_LOCK_FILE = 'layers.composer.lock';
 
     private const PROJECT_TYPE = 'project';
     private const LAYER_TYPE = 'layer';
