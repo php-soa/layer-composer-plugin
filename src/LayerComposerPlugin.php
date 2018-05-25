@@ -42,9 +42,6 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
 
     //----------------------------------------
 
-    /** @var LayerManager $layerManager */
-    private $layerManager;
-
     /** @var LayerFactory $layerFactory */
     private $layerFactory;
 
@@ -91,10 +88,17 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
         $layer->setConfigDir($path . $configDir);
         $layer->setMetadata($path . $metadata);
 
-        $this->layerManager->registerLayer($layer);
+        LayerManager::getInstance()->registerLayer($layer);
     }
 
     //########################################
+
+    /**
+     * @throws Exception
+     */
+    private function inactivate(): void {
+        LayerManager::getInstance()->save($this->layerStore);
+    }
 
     /**
      * @param Composer $composer
@@ -103,19 +107,11 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
     public function activate(Composer $composer, IOInterface $io): void {
 
         $this->layerFactory = new LayerFactory($composer->getInstallationManager());
-        $this->layerManager = LayerManager::getInstance();
         $this->composer = $composer;
 
         $path = \dirname($this->composer->getConfig()->get('vendor-dir')) . DIRECTORY_SEPARATOR;
         $this->layerStore = new JsonFile($path . self::LAYERS_LOCK_FILE);
-        $this->layerManager->load($this->layerStore);
-    }
-
-    /**
-     * @throws Exception
-     */
-    private function inactivate(): void {
-        $this->layerManager->save($this->layerStore);
+        LayerManager::getInstance()->load($this->layerStore);
     }
 
     //########################################
@@ -131,7 +127,7 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
 
         $layer = $this->layerFactory->create($package);
 
-        $this->layerManager->registerLayer($layer);
+        LayerManager::getInstance()->registerLayer($layer);
     }
 
     /**
@@ -145,7 +141,7 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
 
         $layer = $this->layerFactory->create($package);
 
-        $this->layerManager->unRegisterLayer($layer);
+        LayerManager::getInstance()->unRegisterLayer($layer);
     }
 
     //########################################
