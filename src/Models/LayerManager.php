@@ -168,7 +168,7 @@ class LayerManager implements Singleton {
     /**
      * @param Layer $layer
      */
-    public function unRegisterLayer(Layer $layer): void {
+    public function unregisterLayer(Layer $layer): void {
 
         if (true === empty($this->heap[$layer->getName()])) {
             return;

@@ -96,7 +96,7 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
     /**
      * @throws Exception
      */
-    private function inactivate(): void {
+    private function deactivate(): void {
         LayerManager::getInstance()->save($this->layerStore);
     }
 
@@ -141,7 +141,7 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
 
         $layer = $this->layerFactory->create($package);
 
-        LayerManager::getInstance()->unRegisterLayer($layer);
+        LayerManager::getInstance()->unregisterLayer($layer);
     }
 
     //########################################
@@ -151,7 +151,7 @@ class LayerComposerPlugin implements PluginInterface, EventSubscriberInterface {
      */
     public function postInstallCmd(): void {
         $this->registerRootLayer();
-        $this->inactivate();
+        $this->deactivate();
     }
 
     //########################################
